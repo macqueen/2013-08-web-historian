@@ -1,3 +1,7 @@
 www.google.com
 www.yahoo.com
 www.techcrunch.com
+www.rottentomatoes.com
+www.nytimes.com
+www.hackreactor.com
+www.mattsilverstein.com

@@ -11,7 +11,8 @@ exports.readUrls = function(cb){
 
 exports.downloadUrls = function(urls){
   for(var i = 0; i < urls.length; i++){
-    getter.get(urls[i], './data/sites/' + urls[i], function(error, result){
+    //getter.get(urls[i], './data/sites/' + urls[i], function(error, result){
+    getter.get(urls[i], '/Users/hackreactor/code/macqueen/2013-08-web-historian/data/sites/' + urls[i], function(error, result){
       if(error){
         console.log(error);
       } else {
