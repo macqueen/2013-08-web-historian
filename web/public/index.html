@@ -2,18 +2,36 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="styles.css" />
-<!--   // <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 </head>
 <body>
   <form method="POST">
     <input type="input" name="url"></input>
   </form>
+  <ul class="websites"></ul>
 </body>
 <script>
-// $(document).ready(function(){
-//   $('form').submit(function(event) {
-//     event.preventDefault();
-//   });
-// });
+$(document).ready(function(){
+  var fetchSites = function(){
+    $.ajax('http://127.0.0.1:8080/websites/all', {
+      success: renderSites,
+      error: function() {
+      }
+    })
+  };
+
+  var renderSites = function(data) {
+    $('.websites').html('');
+    for(var i = 0; i < data.urls.length; i++){
+      $('<li></li>').append($('<a></a>')
+                    .text(data.urls[i])
+                    .attr('href', 'websites/url/' + data.urls[i]))
+                    .appendTo('.websites');
+    }
+  };
+
+  fetchSites();
+  setInterval(fetchSites, 60000);
+});
 </script>
 </html>
